@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 const Context = React.createContext()
 
-function ContextProvider(props) {
+const ContextProvider = props => {
   const [photos, setPhotos] = useState([])
 
   return (
