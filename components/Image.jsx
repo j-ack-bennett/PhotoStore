@@ -5,8 +5,21 @@ const Image = props => {
   const [isHovered, setIsHovered] = useState(false)
   const {toggleFavorite} = useContext(Context)
 
-  const heartIcon = isHovered &&
-    <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
+  const heartIcon = () => {
+    if(props.img.isFavorite) {
+      return 
+        <i 
+          className="ri-heart-fill favorite" 
+          onClick={() => toggleFavorite(props.img.id)}
+        ></i>
+    } else if(isHovered) {
+      return 
+        <i 
+          className="ri-heart-line favorite" 
+          onClick={() => toggleFavorite(props.img.id)}
+        ></i>
+    }
+  }
   const cartIcon = isHovered &&
     <i className="ri-add-circle-line cart"></i>
 
@@ -17,7 +30,7 @@ const Image = props => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img src={props.img.photoUrl} className="image-grid" />
-      {heartIcon}
+      {heartIcon()}
       {cartIcon}
     </div>
   )
