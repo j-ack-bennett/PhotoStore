@@ -15,8 +15,6 @@ const ContextProvider = props => {
   const toggleFavorite = id => {
     const newArr = photos.map(photo => {
       if(photo.id === id) {
-        console.log(id)
-        console.log(!photo.isFavorite)
         return {
           ...photo,
           isFavorite: !photo.isFavorite
