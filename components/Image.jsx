@@ -4,7 +4,7 @@ import {Context} from "../Context"
 
 const Image = props => {
   const [isHovered, setIsHovered] = useState(false)
-  const {toggleFavorite, addToCart, cartItems} = useContext(Context)
+  const {toggleFavorite, addToCart, cartItems, removeFromCart} = useContext(Context)
 
   const heartIcon = () => {
     if(props.img.isFavorite) {
@@ -25,12 +25,16 @@ const Image = props => {
   const cartIcon = () => {
     const inCart = cartItems.some(item => item.id === img.id)
     if(inCart) {
-      return <i className="ri-shopping-cart-fill cart" />
+      return 
+        <i 
+          className="ri-shopping-cart-fill cart" 
+          onClick={() => removeFromCart(props.img.id)} 
+        />
     } else if(isHovered) {
       return 
         <i 
           className="ri-add-circle-line cart" 
-          onClick={() => addToCart(img)}
+          onClick={() => addToCart(props.img)}
         />
     }
   }
