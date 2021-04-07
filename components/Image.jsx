@@ -4,7 +4,7 @@ import {Context} from "../Context"
 
 const Image = props => {
   const [isHovered, setIsHovered] = useState(false)
-  const {toggleFavorite} = useContext(Context)
+  const {toggleFavorite, addToCart} = useContext(Context)
 
   const heartIcon = () => {
     if(props.img.isFavorite) {
@@ -21,8 +21,9 @@ const Image = props => {
         ></i>
     }
   }
+
   const cartIcon = isHovered &&
-    <i className="ri-add-circle-line cart"></i>
+    <i className="ri-add-circle-line cart" onClick={() => addToCart(img)}></i>
 
   return (
     <div 
@@ -32,7 +33,7 @@ const Image = props => {
     >
       <img src={props.img.photoUrl} className="image-grid" />
       {heartIcon()}
-      {cartIcon}
+      {cartIcon()}
     </div>
   )
 }
