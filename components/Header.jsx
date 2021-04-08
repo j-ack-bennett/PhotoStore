@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import {Context} from "../Context"
+import { Context } from "../Context"
 
 const Header = () => {
   const {cartItems} = useContext(Context)
