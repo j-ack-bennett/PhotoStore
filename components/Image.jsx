@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react"
 import PropTypes from "prop-types"
-import {Context} from "../Context"
+
+import { Context } from "../Context"
 
 const Image = props => {
   const [isHovered, setIsHovered] = useState(false)
@@ -8,39 +9,20 @@ const Image = props => {
 
   const heartIcon = () => {
     if(props.img.isFavorite) {
-      return 
-        <i 
-          className="ri-heart-fill favorite" 
-          onClick={() => toggleFavorite(props.img.id)}
-        />
+      return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(props.img.id)}></i>
     } else if(isHovered) {
-      return 
-        <i 
-          className="ri-heart-line favorite" 
-          onClick={() => toggleFavorite(props.img.id)}
-        />
+      return <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
     }
   }
 
   const cartIcon = () => {
     const inCart = cartItems.some(item => item.id === img.id)
     if(inCart) {
-      return 
-        <i 
-          className="ri-shopping-cart-fill cart" 
-          onClick={() => removeFromCart(props.img.id)} 
-        />
+      return <i className="ri-shopping-cart-fill cart" onClick={() => removeFromCart(props.img.id)}></i>
     } else if(isHovered) {
-      return 
-        <i 
-          className="ri-add-circle-line cart" 
-          onClick={() => addToCart(props.img)}
-        />
+      return <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
     }
   }
-
-  const heart = isHovered && <i className="ri-heart-line favorite"></i>
-  const cart = isHovered && <i className="ri-add-circle-line cart"></i>
 
   return (
     <div 
