@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react"
+import PropTypes from "prop-types"
 
 import { Context } from "../Context"
 
@@ -6,7 +7,7 @@ const CartItem = props => {
   const {removeFromCart} = useContext(Context)
   const [isHovered, setIsHovered] = useState(false)
 
-  const trashIcon = hovered ? "ri-delete-bin-fill" : "ri-delete-bin-line"
+  const trashIcon = isHovered ? "ri-delete-bin-fill" : "ri-delete-bin-line"
   
   return (
     <div className="cart-item">
@@ -21,6 +22,12 @@ const CartItem = props => {
       <p>$9.99</p>
     </div>
   )
+}
+
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    url: PropTypes.string.isRequired
+  })
 }
 
 export default CartItem
