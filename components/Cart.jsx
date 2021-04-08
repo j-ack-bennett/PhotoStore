@@ -27,9 +27,12 @@ const Cart = () => {
       <h1>Check out</h1>
       {cartItemElements}
       <p className="total-cost">Total: {displayTotalCost}</p>
-      <div className="order-button">
-        <button onClick={placeOrder}>{text}</button>
-      </div>
+      { cartItems.length > 0 ?
+        <div className="order-button">
+          <button onClick={placeOrder}>{text}</button>
+        </div> :
+        null
+      }
     </main>
   )
 }
