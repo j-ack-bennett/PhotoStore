@@ -39,6 +39,9 @@ const Image = props => {
     }
   }
 
+  const heart = isHovered && <i className="ri-heart-line favorite"></i>
+  const cart = isHovered && <i className="ri-add-circle-line cart"></i>
+
   return (
     <div 
       className={`${props.className} image-container`}
